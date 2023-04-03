@@ -54,15 +54,15 @@ function playButton(){
     griglia.innerHTML = ""
     
     // Definisco la variabile per il valore del select("difficolta")
-    let valueDifficoltA = difficoltA.value;
+    let valueDifficoltA = parseInt(difficoltA.value);
     
     // Evoco la funzione per cambiare il numero di celle per riga
-    widthCelle(valueDifficoltA)
+    widthCelle(valueDifficoltA);
             
     // Creo un ciclo per generare una serie sequenziale di numeri da 1 a 100
     for ( let i = 1; i <= valueDifficoltA; i++ ) {
     
-        let scatola = creoDiv( `div`, `box_easy`, i )
+        let scatola = creoDiv( `div`, `box_easy`, i );
     
         // Evento al click che cambia di colore i box dentro la griglia
         scatola.addEventListener( `click`, function () {
@@ -71,12 +71,20 @@ function playButton(){
             console.log(`selected`)
         })
     
-        griglia.append(scatola)
-    }
+        griglia.append(scatola);
 
+        console.log(i);
+    }
 }
 
-/* DARK MODE */
+/* ---- Generazione Bombe ---- */
+// Invoco la funzione con il valore della difficoltà(difficoltA) come parametro
+generoBombe(difficoltA);
+
+// Genero la funzione con un argomento che verrà invocato con "difficoltA"
+function generoBombe(paramDifficoltA)
+
+/* ---- DARK MODE ---- */
 
 let darkMode = false;
 
