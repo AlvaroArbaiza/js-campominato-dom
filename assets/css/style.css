@@ -13,6 +13,7 @@
     --borderColor: black;
     --bgBox: springgreen;
     --bgBoxSelected: darkorange;
+    --widthBox: 10;
 }
 
 header {
@@ -172,21 +173,9 @@ main #griglia .box_hardcore {
     background-color: var(--bgBox);
 }
 
-/* Boxes - Easy mode*/
+/* Boxes*/
 main #griglia .box_easy {
-    width: calc(100% / 10);
-    aspect-ratio: 1;
-}
-
-/* Boxes - Medium mode*/
-main #griglia .box_medium {
-    width: calc(100% / 9);
-    aspect-ratio: 1;
-}
-
-/* Boxes - Hardcore mode*/
-main #griglia .box_hardcore {
-    width: calc(100% / 7);
+    width: calc(100% / var(--widthBox));
     aspect-ratio: 1;
 }
 

@@ -6,8 +6,12 @@ Consegna:
     - Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 */
 
+/* --------------------------- Variabili --------------------------- */
 // Creo una variabile per selezionare il div #griglia
 const griglia = document.querySelector( `#griglia`);
+
+// Creo una variabile per selezionare l'elemento root
+const root = document.querySelector(`:root`);
 
 // Definisco la variabile per il select ("difficolta")
 let difficoltA = document.getElementById("difficolta");
@@ -15,6 +19,7 @@ let difficoltA = document.getElementById("difficolta");
 // Definisco la variabile per il Button PLAY
 let play = document.getElementById("play");
 
+/* --------------------------- Funzioni --------------------------- */
 // Funzione per creare elemento( div class="box" ) con i numeri all'interno( testo )
 function creoDiv( elemento, classe, testo ) {
 
@@ -32,81 +37,51 @@ function creoDiv( elemento, classe, testo ) {
 
 // Aggiungo una funzione al click di PLAY
 play.addEventListener( `click`, function(){
-    
+
     // Invocazione gioco al Play
     playButton()
 })
 
+// Funzione per il numero di celle in base al value di ("difficoltA")
+function widthCelle(cellePerRiga) {
+    root.style.setProperty( `--widthBox`, ( Math.sqrt(cellePerRiga) ) );
+}
+
 /* ---------------------- Funzioni Custom ---------------------- */
 function playButton(){
     
-    // Aggiungo questo spazio di default
+    // Aggiungo questo innerHTML per avere uno spazio vuoto di default
     griglia.innerHTML = ""
     
     // Definisco la variabile per il valore del select("difficolta")
     let valueDifficoltA = difficoltA.value;
     
-    console.log(valueDifficoltA)
+    // Evoco la funzione per cambiare il numero di celle per riga
+    widthCelle(valueDifficoltA)
+            
+    // Creo un ciclo per generare una serie sequenziale di numeri da 1 a 100
+    for ( let i = 1; i <= valueDifficoltA; i++ ) {
     
-    // Creo le condizioni
-    if ( valueDifficoltA == "easy" ) {
-        
-        // Creo un ciclo per generare una serie sequenziale di numeri da 1 a 100
-        for ( let i = 1; i <= 100; i++ ) {
-        
-            let scatola = creoDiv( `div`, `box_easy`, i )
-        
-            // Evento al click che cambia di colore i box dentro la griglia
-            scatola.addEventListener( `click`, function () {
-        
-                this.classList.toggle("selected");
-                console.log(`selected`)
-            })
-        
-            griglia.append(scatola)
-        }
-
-    } else if ( valueDifficoltA == "medium" ) {
+        let scatola = creoDiv( `div`, `box_easy`, i )
     
-        for ( let i = 1; i <= 81; i++ ) {
-        
-            let scatola = creoDiv( `div`, `box_medium`, i )
-        
-            // Evento al click che cambia di colore i box dentro la griglia
-            scatola.addEventListener( `click`, function () {
-        
-                this.classList.toggle("selected");
-                console.log(`selected`)
-            })
-        
-            griglia.append(scatola)
-        }
-    } else if ( valueDifficoltA == "hard" ) {
+        // Evento al click che cambia di colore i box dentro la griglia
+        scatola.addEventListener( `click`, function () {
     
-        for ( let i = 1; i <= 49; i++ ) {
-        
-            let scatola = creoDiv( `div`, `box_hardcore`, i )
-        
-            // Evento al click che cambia di colore i box dentro la griglia
-            scatola.addEventListener( `click`, function () {
-        
-                this.classList.toggle("selected");
-                console.log(`selected`)
-            })
-        
-            griglia.append(scatola)
-        }
+            this.classList.toggle("selected");
+            console.log(`selected`)
+        })
+    
+        griglia.append(scatola)
     }
+
 }
 
 /* DARK MODE */
-// Seleziono l'elemento root
-const root = document.querySelector(`:root`);
 
 let darkMode = false;
 
 // Creiamo la funzione che al click cambierà i valore all'interno di :root
-function myFunction() {
+function changeTheme() {
     root.style.setProperty(`--bgWhite`, `black`);
     root.style.setProperty(`--bgMain`, `black`);
     root.style.setProperty(`--bgPlay`, `black`);
@@ -122,7 +97,7 @@ document.getElementById(`darkMode`).addEventListener( `click`, function() {
     // Creiamo una serie di condizioni per la quale ogni volta verra attivato e non
     if (!darkMode) {
         
-        myFunction()
+        changeTheme()
         darkMode = true;
     } else {
         root.style.setProperty(`--bgWhite`, `white`);
