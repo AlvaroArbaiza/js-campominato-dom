@@ -60,21 +60,32 @@ function playButton(){
     widthCelle(valueDifficoltA);
 
     // Invoco la funzione con il valore della difficoltà(difficoltA) come parametro
-    generoBombe(valueDifficoltA);
+    let bombe = generoBombe(valueDifficoltA);
             
     // Creo un ciclo per generare una serie sequenziale di numeri da 1 a 100
     for ( let i = 1; i <= valueDifficoltA; i++ ) {
     
         let scatola = creoDiv( `div`, `box_easy`, i );
-    
+        
+        griglia.append(scatola);
+
         // Evento al click che cambia di colore i box dentro la griglia
         scatola.addEventListener( `click`, function () {
     
-            this.classList.toggle("selected");
-            console.log(`selected`)
+            // this.classList.toggle("selected");
+
+            // Condizioni per inserire le bombe
+            if ( !bombe.includes(i) ){
+
+                // Se (i) non è presente pusho selected
+                this.classList.add("selected")
+            } else {
+
+                // Altrimenti pusho la bomba
+                this.classList.add("selected-bomb")
+            }
         })
     
-        griglia.append(scatola);
     }
 }
 

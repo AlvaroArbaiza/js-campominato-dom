@@ -183,6 +183,10 @@ main #griglia .selected {
     background-color: var(--bgBoxSelected);
 }
 
+main #griglia .selected-bomb {
+    background-color: red;
+}
+
 /* --------------------------- FOOTER --------------------------- */
 footer {
     position: relative;
