@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Campo minato</title>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+
+            <!-- Left side -->
+            <div id="left-header">
+
+                <a href="#">
+        
+                    <img src="./assets/img/Logo.png" alt="logo">
+                </a>
+        
+                <div id="titolo">
+                    <h1>Campo Minato</h1>
+                </div>
+            </div>
+
+            <!-- Right side -->
+            <div id="right-header">
+
+                <!-- Darkmode -->
+                <div id="darkMode">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
+
+                <!-- Difficoltà -->
+                <div id="container-difficolta">
+                    
+                    <label for="difficoltà">Scegli la difficoltà:</label>
+                    
+                    <!-- Menu icon -->
+                    <div id="menu-difficolta">
+                        <div id="square-menu">
+
+                            <div>
+                                <i class="fa-solid fa-skull"></i>
+                            </div>
+                            <select name="difficoltà" id="difficolta">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>            
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Button play -->
+                <div>
+                    <a id="play">Play</a>
+                </div>
+            </div>
+    
+        </div>
+    </header>
+    
+    <main>
+
+        <!-- Griglia -->
+        <div id="griglia">
+          
+        </div>
+
+    </main>
+
+    <footer>
+        <div>
+
+            <span>Made with &hearts; by</span>
+            <span><a href="#">Boolean</a></span>
+        </div>
+    </footer>
+
+
+    <!-- Js -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

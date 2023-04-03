@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+:root {
+    --bgWhite: white;
+    --bgMain: whitesmoke;
+    --bgPlay: greenyellow;
+    --colorBlack: black;
+    --borderColor: black;
+    --bgBox: springgreen;
+    --bgBoxSelected: darkorange;
+}
+
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: var(--bgWhite);
+    color: var(--colorBlack);
+}
+
+main {
+    background-color: var(--bgMain);
+}
+
+img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Display: Flex */
+header .container #left-header,
+header .container #right-header,
+header .container #right-header #container-difficolta,
+header .container #right-header #menu-difficolta,
+header .container #right-header #square-menu,
+main,
+main #griglia,
+main #griglia .box_easy,
+main #griglia .box_medium,
+main #griglia .box_hardcore,
+footer  {
+    display: flex;    
+}
+
+/* Align items: Center */
+header .container #right-header #container-difficolta,
+header .container #right-header #menu-difficolta,
+main,
+main #griglia .box_easy,
+main #griglia .box_medium,
+main #griglia .box_hardcore,
+footer {
+    align-items: center;
+}
+
+/* --------------------------- HEADER --------------------------- */
+header .container {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* HEADER - Left side */
+header .container #left-header a {
+    max-width: 100px;
+    padding: 12px;
+}
+header .container #left-header #titolo {
+    margin: auto 0;
+    font-size: 26px;
+}
+
+/* HEADER - Right side */
+/* Darkmode */
+header .container #right-header #darkMode {
+    width: 50px;
+    height: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+    font-size: 30px;
+}
+
+/* Difficoltà */
+header .container #right-header div:has( #mode),
+header .container #right-header div:has(a) {
+    margin: auto 0 auto 60px;
+}
+
+/* Label */
+header .container #right-header label {
+    font-size: 20px;
+}
+
+/* Menu icon */
+header .container #right-header #menu-difficolta {
+    height: 80px;
+}
+header .container #right-header #square-menu {
+    text-align: center;
+    position: relative;
+    font-size: 25px;
+    margin-left: 30px;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border: 3px solid;
+    
+}
+
+/* Select */
+header .container #right-header select {
+    position: absolute;
+    display: none;
+    top: -2px;
+    left: -10px;
+}
+
+/* Menu icon hover */
+header .container #right-header #menu-difficolta:hover select {
+    display: flex;
+    font-weight: 800;
+    color: black;
+    padding: 17px 0;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+}
+/* Button play */
+header .container #right-header a {
+    padding: 10px 20px;
+    font-size: 25px;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--colorBlack);
+    border: 3px solid var(--borderColor);
+    background-color: var(--bgPlay);
+}
+
+
+/* --------------------------- MAIN --------------------------- */
+main {    
+    justify-content: center;
+    padding: 40px 0;
+}
+
+/* Griglia */
+main #griglia {
+    width: 40%;
+    flex-wrap: wrap;
+}
+
+/* Boxes */
+main #griglia .box_easy,
+main #griglia .box_medium,
+main #griglia .box_hardcore {
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--borderColor);
+    background-color: var(--bgBox);
+}
+
+/* Boxes - Easy mode*/
+main #griglia .box_easy {
+    width: calc(100% / 10);
+    aspect-ratio: 1;
+}
+
+/* Boxes - Medium mode*/
+main #griglia .box_medium {
+    width: calc(100% / 9);
+    aspect-ratio: 1;
+}
+
+/* Boxes - Hardcore mode*/
+main #griglia .box_hardcore {
+    width: calc(100% / 7);
+    aspect-ratio: 1;
+}
+
+main #griglia .selected {
+    background-color: var(--bgBoxSelected);
+}
+
+/* --------------------------- FOOTER --------------------------- */
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    color: var(--colorBlack);
+    background-color: var(--bgWhite);
+}
+
+footer div:has(span) {
+    width: 90%;
+}
+
+footer div span a {
+    color: blue;
+}
