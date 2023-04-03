@@ -1,24 +1,21 @@
 /*
 Consegna:
-    - L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-    - Ogni cella ha un numero progressivo, da 1 a 100.
-    - Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-    - Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
-
-Bonus :
-    - Aggiungere una select accanto al bottone di generazione, che fornisca una scelta tra tre diversi livelli di difficoltà:
-        - con difficoltà 1 => 100 caselle, con un numero compreso tra 1 e 100, divise in 10 caselle per 10 righe;
-        - con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
-        - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
-
-Bonus extra :
-    - Aggiungere la versione dark mode
+    - Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
+    - In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+    - La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
+    - Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 */
 
 // Creo una variabile per selezionare il div #griglia
 const griglia = document.querySelector( `#griglia`);
 
-// Funzione per creare elemento div="box"
+// Definisco la variabile per il select ("difficolta")
+let difficoltA = document.getElementById("difficolta");
+
+// Definisco la variabile per il Button PLAY
+let play = document.getElementById("play");
+
+// Funzione per creare elemento( div class="box" ) con i numeri all'interno( testo )
 function creoDiv( elemento, classe, testo ) {
 
     // Creo l'elemento div
@@ -27,28 +24,32 @@ function creoDiv( elemento, classe, testo ) {
     // Aggiungo del testo
     div.innerText = testo
     
-    // Aggiungo a div la classe .box
+    // Aggiungo a div la classe "box"
     div.classList.add(classe);
 
     return div;
 }
 
-// Definisco la variabile per il button Play
-let play = document.getElementById("play");
+// Aggiungo una funzione al click di PLAY
+play.addEventListener( `click`, function(){
+    
+    // Invocazione gioco al Play
+    playButton()
+})
 
-// Aggiungo una funziona al click
-play.addEventListener( `click`, function() {
+/* ---------------------- Funzioni Custom ---------------------- */
+function playButton(){
     
     // Aggiungo questo spazio di default
     griglia.innerHTML = ""
     
-    // Definisco la variabile per select
-    let difficoltA = document.getElementById("difficolta").value;
+    // Definisco la variabile per il valore del select("difficolta")
+    let valueDifficoltA = difficoltA.value;
     
-    console.log(difficoltA)
+    console.log(valueDifficoltA)
     
     // Creo le condizioni
-    if ( difficoltA == "easy" ) {
+    if ( valueDifficoltA == "easy" ) {
         
         // Creo un ciclo per generare una serie sequenziale di numeri da 1 a 100
         for ( let i = 1; i <= 100; i++ ) {
@@ -65,7 +66,7 @@ play.addEventListener( `click`, function() {
             griglia.append(scatola)
         }
 
-    } else if ( difficoltA == "medium" ) {
+    } else if ( valueDifficoltA == "medium" ) {
     
         for ( let i = 1; i <= 81; i++ ) {
         
@@ -80,7 +81,7 @@ play.addEventListener( `click`, function() {
         
             griglia.append(scatola)
         }
-    } else if ( difficoltA == "hard" ) {
+    } else if ( valueDifficoltA == "hard" ) {
     
         for ( let i = 1; i <= 49; i++ ) {
         
@@ -96,7 +97,7 @@ play.addEventListener( `click`, function() {
             griglia.append(scatola)
         }
     }
-})
+}
 
 /* DARK MODE */
 // Seleziono l'elemento root
