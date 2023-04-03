@@ -51,11 +51,17 @@ function widthCelle(cellePerRiga) {
 function playButton(){
     
     // Aggiungo questo innerHTML per avere uno spazio vuoto di default
-    griglia.innerHTML = ""
+    griglia.innerHTML = "";
     
     // Definisco la variabile per il valore del select("difficolta")
     let valueDifficoltA = parseInt(difficoltA.value);
     
+    // Settiamo una variabile true/false
+    let gameOver = false;
+
+    // Creazione variabile per assegnare un punteggio
+    let score = 0;
+
     // Invoco la funzione per cambiare il numero di celle per riga
     widthCelle(valueDifficoltA);
 
@@ -74,16 +80,36 @@ function playButton(){
     
             // this.classList.toggle("selected");
 
-            // Condizioni per inserire le bombe
-            if ( !bombe.includes(i) ){
+            if (!gameOver) {
 
-                // Se (i) non è presente pusho selected
-                this.classList.add("selected")
+                // Condizioni per inserire le bombe
+                if ( !bombe.includes(i) ){
+    
+                    // Se (i) non è presente pusho selected
+                    this.classList.add("selected")
+
+                    // Ogni volta che l'utente non clicckerà su di una bomba acccumulerà 1 punto
+                    score++;
+                } else {
+    
+                    // Altrimenti pusho la bomba
+                    this.classList.add("selected-bomb")
+                    gameOver = true
+
+                    // Quando la bomba è stata clickata inseriamo un testo con il punteggio
+                    document.getElementById("griglia").innerHTML=
+                     `
+                        <div>
+                            <h2>Hai perso!</h2>
+                            <h3>Il tuo punteggio è di: ${score} points</h3>
+                        </div>
+                     `
+                }
             } else {
 
-                // Altrimenti pusho la bomba
-                this.classList.add("selected-bomb")
+                griglia.innerHTML = ""
             }
+
         })
     
     }
