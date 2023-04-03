@@ -56,8 +56,11 @@ function playButton(){
     // Definisco la variabile per il valore del select("difficolta")
     let valueDifficoltA = parseInt(difficoltA.value);
     
-    // Evoco la funzione per cambiare il numero di celle per riga
+    // Invoco la funzione per cambiare il numero di celle per riga
     widthCelle(valueDifficoltA);
+
+    // Invoco la funzione con il valore della difficoltà(difficoltA) come parametro
+    generoBombe(valueDifficoltA);
             
     // Creo un ciclo per generare una serie sequenziale di numeri da 1 a 100
     for ( let i = 1; i <= valueDifficoltA; i++ ) {
@@ -72,17 +75,41 @@ function playButton(){
         })
     
         griglia.append(scatola);
-
-        console.log(i);
     }
 }
 
 /* ---- Generazione Bombe ---- */
-// Invoco la funzione con il valore della difficoltà(difficoltA) come parametro
-generoBombe(difficoltA);
+
 
 // Genero la funzione con un argomento che verrà invocato con "difficoltA"
-function generoBombe(paramDifficoltA)
+function generoBombe(paramDifficoltA){
+
+    // Creazione array vuoto
+    let array = [];
+    
+    console.log(array);
+
+    // Ciclo while per creare un numero predefinito di bombe
+    while ( array.length < 16 ) {
+
+        let bomb = numRand( paramDifficoltA, 1 );
+
+        // Controllo per verificare se il numero random è già presente
+        if (!array.includes(bomb)) {
+        
+            // Se non presente viene pushato "bomb"
+            array.push(bomb)
+        }
+    }
+
+    // Return sull'array con le bombe
+    return array;
+}
+
+// Funzione per la creazione di un numero Random
+function numRand( max, min) {
+    return Math.floor( (Math.random() * max) + min );
+}
 
 /* ---- DARK MODE ---- */
 
