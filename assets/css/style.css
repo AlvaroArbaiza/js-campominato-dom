@@ -7,27 +7,27 @@
 
 :root {
     --bgWhite: white;
-    --bgMain: whitesmoke;
+    --bgMain: white;
     --bgPlay: greenyellow;
     --colorBlack: black;
     --borderColor: black;
-    --bgBox: springgreen;
-    --bgBoxSelected: darkorange;
+    --bgBox: gainsboro;
+    --bgBoxSelected: chartreuse;
     --widthBox: 10;
 }
 
 header {
-    position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 80px;
     background-color: var(--bgWhite);
     color: var(--colorBlack);
+    overflow: auto;
 }
 
 main {
+    height: calc(100vh - 130px);
     background-color: var(--bgMain);
+    justify-content: center;
 }
 
 img {
@@ -152,15 +152,15 @@ header .container #right-header a {
 
 
 /* --------------------------- MAIN --------------------------- */
-main {    
-    justify-content: center;
-    padding: 40px 0;
-}
-
 /* Griglia */
 main #griglia {
-    width: 40%;
+    width: 45%;
     flex-wrap: wrap;
+}
+
+#gameOver {
+    
+    color: var(--colorBlack);
 }
 
 /* Boxes */
@@ -184,7 +184,13 @@ main #griglia .selected {
 }
 
 main #griglia .selected-bomb {
-    background-color: red;
+    background-color: #ff0000;
+}
+
+/* Bomb */
+.fa-solid.fa-bomb.fa-shake {
+    font-size: 2.5rem;
+    
 }
 
 /* --------------------------- FOOTER --------------------------- */

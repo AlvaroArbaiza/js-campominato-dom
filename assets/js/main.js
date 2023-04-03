@@ -57,7 +57,7 @@ function playButton(){
     let valueDifficoltA = parseInt(difficoltA.value);
     
     // Settiamo una variabile true/false
-    let gameOver = false;
+    let inGame = false;
 
     // Creazione variabile per assegnare un punteggio
     let score = 0;
@@ -80,34 +80,37 @@ function playButton(){
     
             // this.classList.toggle("selected");
 
-            if (!gameOver) {
+            if (inGame = true) {
 
                 // Condizioni per inserire le bombe
                 if ( !bombe.includes(i) ){
     
                     // Se (i) non è presente pusho selected
                     this.classList.add("selected")
+                    this.innerHTML=
+                    `<img src="./assets/img/flower png.png" alt="">`;
 
                     // Ogni volta che l'utente non clicckerà su di una bomba acccumulerà 1 punto
                     score++;
                 } else {
     
                     // Altrimenti pusho la bomba
-                    this.classList.add("selected-bomb")
-                    gameOver = true
-
+                    this.classList.add("selected-bomb");
+                    this.innerHTML=
+                    `<i class="fa-solid fa-bomb fa-shake fa-2xl" style="color: #000000;"></i>`;
+                    
                     // Quando la bomba è stata clickata inseriamo un testo con il punteggio
-                    document.getElementById("griglia").innerHTML=
-                     `
-                        <div>
-                            <h2>Hai perso!</h2>
-                            <h3>Il tuo punteggio è di: ${score} points</h3>
-                        </div>
-                     `
+                    griglia.innerHTML+=
+                    `
+                    <div id="gameOver">
+                    <h2>Hai perso!</h2>
+                    <h3>Il tuo punteggio è di: ${score} points</h3>
+                    </div>
+                    `
+                    inGame = false;
                 }
             } else {
-
-                griglia.innerHTML = ""
+                document.getElementById("griglia").innerHTML = "";
             }
 
         })
@@ -115,35 +118,33 @@ function playButton(){
     }
 }
 
-/* ---- Generazione Bombe ---- */
+/* -------- Generazione Bombe -------- */
 
-
-// Genero la funzione con un argomento che verrà invocato con "difficoltA"
+// Genero la funzione che verrà invocata con ( let bombe = generoBombe(valueDifficoltA) )
 function generoBombe(paramDifficoltA){
 
-    // Creazione array vuoto
-    let array = [];
-    
-    console.log(array);
+    // Creo un array vuoto
+    let array = [];    
 
-    // Ciclo while per creare un numero predefinito di bombe
+    // Ciclo while per creare un numero predefinito di bombe dentro l'array
     while ( array.length < 16 ) {
 
+        // Variabile che evoca la funzione ( numRand( max, min) )
         let bomb = numRand( paramDifficoltA, 1 );
 
-        // Controllo per verificare se il numero random è già presente
+        // Se nell'array non c'è il valore ( bomb )
         if (!array.includes(bomb)) {
         
-            // Se non presente viene pushato "bomb"
+            // Viene pushato ( bomb )
             array.push(bomb)
         }
     }
 
-    // Return sull'array con le bombe
+    // Return sull'array cosi quando invoco la funzione ottengo i valori generati da essa
     return array;
 }
 
-// Funzione per la creazione di un numero Random
+// Funzione per la creazione di un numero Random 
 function numRand( max, min) {
     return Math.floor( (Math.random() * max) + min );
 }
@@ -160,7 +161,6 @@ function changeTheme() {
     root.style.setProperty(`--colorBlack`, `white`);
     root.style.setProperty(`--borderColor`, `white`);
     root.style.setProperty(`--bgBox`, `white`);
-    root.style.setProperty(`--bgBoxSelected`, `red`);
 }
 
 // Targhettizziamo l'elemento darkMode e aggiungiamo un evento al click
@@ -173,12 +173,11 @@ document.getElementById(`darkMode`).addEventListener( `click`, function() {
         darkMode = true;
     } else {
         root.style.setProperty(`--bgWhite`, `white`);
-        root.style.setProperty(`--bgMain`, `whitesmoke`);
+        root.style.setProperty(`--bgMain`, `white`);
         root.style.setProperty(`--bgPlay`, `greenyellow`);
         root.style.setProperty(`--colorBlack`, `black`);
         root.style.setProperty(`--borderColor`, `black`);
-        root.style.setProperty(`--bgBox`, `springgreen`);
-        root.style.setProperty(`--bgBoxSelected`, `darkorange`);
+        root.style.setProperty(`--bgBox`, `gainsboro`);
         darkMode = false;
     }
 })
