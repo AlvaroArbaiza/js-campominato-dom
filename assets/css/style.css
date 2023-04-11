@@ -25,9 +25,10 @@ header {
 }
 
 main {
-    height: calc(100vh - 130px);
+    padding: 10px 0;
     background-color: var(--bgMain);
     justify-content: center;
+    overflow: auto;
 }
 
 img {
@@ -154,7 +155,7 @@ header .container #right-header a {
 /* --------------------------- MAIN --------------------------- */
 /* Griglia */
 main #griglia {
-    width: 45%;
+    width: 40%;
     flex-wrap: wrap;
 }
 
