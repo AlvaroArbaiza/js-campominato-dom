@@ -19,15 +19,18 @@ let difficoltA = document.getElementById("difficolta");
 // Definisco la variabile per il Button PLAY
 let play = document.getElementById("play");
 
+// Seleziono lo span "time"
+let tempo = document.getElementById("time");
+
+// Variabile contatore
+let count = 0;
+
 /* --------------------------- Funzioni --------------------------- */
 // Funzione per creare elemento( div class="box" ) con i numeri all'interno( testo )
-function creoDiv( elemento, classe, testo ) {
+function creoDiv( elemento, classe ) {
 
     // Creo l'elemento div
     const div = document.createElement(elemento);
-
-    // Aggiungo del testo
-    div.innerText = testo
     
     // Aggiungo a div la classe "box"
     div.classList.add(classe);
@@ -50,6 +53,15 @@ function widthCelle(cellePerRiga) {
 /* ---------------------- Funzioni Custom ---------------------- */
 function playButton(){
     
+    // Ripristino count a 0
+    count = 0;
+
+    // Contatore di default
+    tempo.innerHTML = count;
+
+    // Al click faccio partire il contatore
+    let myInterval = setInterval( contatore, 1000);
+
     // Aggiungo questo innerHTML per avere uno spazio vuoto di default
     griglia.innerHTML = "";
     
@@ -71,18 +83,17 @@ function playButton(){
     // Creo un ciclo per generare una serie sequenziale di numeri da 1 a 100
     for ( let i = 1; i <= valueDifficoltA; i++ ) {
     
-        let scatola = creoDiv( `div`, `box_easy`, i );
+        let scatola = creoDiv( `div`, `box` );
         
         griglia.append(scatola);
 
         // Evento al click che cambia di colore i box dentro la griglia
         scatola.addEventListener( `click`, function () {
-    
-            // this.classList.toggle("selected");
+            
+            // Se sono in gioco..
+            if (!inGame) {
 
-            if (inGame = true) {
-
-                // Condizioni per inserire le bombe
+                // Se ( i ) non è incluso in bombe aggiungo la classe selected altrimenti selected-bomb
                 if ( !bombe.includes(i) ){
     
                     // Se (i) non è presente pusho selected
@@ -94,7 +105,7 @@ function playButton(){
                     score++;
                 } else {
     
-                    // Altrimenti pusho la bomba
+                    // Altrimenti aggiungo la classe selected-bomb quando clicco su di una bomba
                     this.classList.add("selected-bomb");
                     this.innerHTML=
                     `<i class="fa-solid fa-bomb fa-shake fa-2xl" style="color: #000000;"></i>`;
@@ -103,16 +114,18 @@ function playButton(){
                     griglia.innerHTML+=
                     `
                     <div id="gameOver">
-                    <h2>Hai perso!</h2>
-                    <h3>Il tuo punteggio è di: ${score} points</h3>
+                    <h4>Hai perso!</h4>
+                    <h5>Il tuo punteggio è di: ${score} punti</h5>
                     </div>
                     `
+                   
+                    clearInterval(myInterval);
+                    
+                    count = 0;
+
                     inGame = false;
                 }
-            } else {
-                document.getElementById("griglia").innerHTML = "";
-            }
-
+            } 
         })
     
     }
@@ -155,12 +168,12 @@ let darkMode = false;
 
 // Creiamo la funzione che al click cambierà i valore all'interno di :root
 function changeTheme() {
-    root.style.setProperty(`--bgWhite`, `black`);
-    root.style.setProperty(`--bgMain`, `black`);
-    root.style.setProperty(`--bgPlay`, `black`);
-    root.style.setProperty(`--colorBlack`, `white`);
-    root.style.setProperty(`--borderColor`, `white`);
-    root.style.setProperty(`--bgBox`, `white`);
+    root.style.setProperty(`--bgWhite`, `#000000`);
+    root.style.setProperty(`--bgMain`, `#000000`);
+    root.style.setProperty(`--bgPlay`, `#000000`);
+    root.style.setProperty(`--colorBlack`, `#fff`);
+    root.style.setProperty(`--borderColor`, `#fff`);
+    root.style.setProperty(`--bgBox`, `#fff`);
 }
 
 // Targhettizziamo l'elemento darkMode e aggiungiamo un evento al click
@@ -172,12 +185,20 @@ document.getElementById(`darkMode`).addEventListener( `click`, function() {
         changeTheme()
         darkMode = true;
     } else {
-        root.style.setProperty(`--bgWhite`, `white`);
-        root.style.setProperty(`--bgMain`, `white`);
+        root.style.setProperty(`--bgWhite`, `#fff`);
+        root.style.setProperty(`--bgMain`, `#fff`);
         root.style.setProperty(`--bgPlay`, `greenyellow`);
-        root.style.setProperty(`--colorBlack`, `black`);
-        root.style.setProperty(`--borderColor`, `black`);
-        root.style.setProperty(`--bgBox`, `gainsboro`);
+        root.style.setProperty(`--colorBlack`, `#000000`);
+        root.style.setProperty(`--borderColor`, `#bbb`);
+        root.style.setProperty(`--bgBox`, `#ccc`);
         darkMode = false;
     }
 })
+
+// Funzione per contare il tempo
+function contatore(){
+
+    count++
+
+    tempo.innerHTML = count;
+}

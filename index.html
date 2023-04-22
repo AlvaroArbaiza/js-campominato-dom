@@ -15,76 +15,99 @@
 </head>
 <body>
 
-    <header>
-        <div class="container">
+    <div id="container-body">
 
-            <!-- Left side -->
-            <div id="left-header">
-
-                <a href="#">
-        
-                    <img src="./assets/img/Logo.png" alt="logo">
-                </a>
-        
-                <div id="titolo">
-                    <h1>Campo Minato</h1>
-                </div>
-            </div>
-
-            <!-- Right side -->
-            <div id="right-header">
-
-                <!-- Darkmode -->
-                <div id="darkMode">
-                    <i class="fa-solid fa-sun"></i>
+        <header>
+            <div class="container">
+    
+                <!-- Left side -->
+                <div id="left-header">
+    
+                    <a href="#">
+            
+                        <img src="./assets/img/Logo.png" alt="logo">
+                    </a>
+            
+                    <div id="titolo">
+                        <h1>Campo Minato</h1>
+                    </div>
                 </div>
 
-                <!-- Difficoltà -->
-                <div id="container-difficolta">
-                    
-                    <label for="difficoltà">Scegli la difficoltà:</label>
-                    
-                    <!-- Menu icon -->
-                    <div id="menu-difficolta">
-                        <div id="square-menu">
+                <!-- Center -->
+                <div id="center-header">
 
-                            <div>
-                                <i class="fa-solid fa-skull"></i>
-                            </div>
-                            <select name="difficoltà" id="difficolta">
-                                <option value="100">Easy</option>
-                                <option value="81">Medium</option>
-                                <option value="49">Hard</option>
-                            </select>            
+                    <div id="container-display">
+
+                        <div id="display">
+    
+                            <h2>TEMPO: <span id="time">0</span></h2>
                         </div>
+                    </div>
+
+                </div>
+    
+                <!-- Right side -->
+                <div id="right-header">
+    
+                    <!-- Darkmode -->
+                    <div id="darkMode">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+    
+                    <!-- Difficoltà -->
+                    <div id="container-difficolta">
+                        
+                        <label for="difficoltà">Scegli la difficoltà:</label>
+                        
+                        <!-- Menu icon -->
+                        <div id="menu-difficolta">
+                            <div id="square-menu">
+    
+                                <!-- icon -->
+                                <div>
+                                    <i class="fa-solid fa-skull"></i>
+                                </div>
+
+                                <!-- select -->
+                                <select name="difficoltà" id="difficolta">
+                                    <option value="100">Easy</option>
+                                    <option value="81">Medium</option>
+                                    <option value="49">Hard</option>
+                                </select>            
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Button play -->
+                    <div>
+                        <a id="play">Play</a>
                     </div>
                 </div>
         
-                <!-- Button play -->
-                <div>
-                    <a id="play">Play</a>
-                </div>
+            </div>
+        </header>
+        
+        <!-- Main -->
+        <main>
+    
+            <!-- Griglia -->
+            <div id="griglia">
+              
             </div>
     
-        </div>
-    </header>
+        </main>
     
-    <main>
-
-        <!-- Griglia -->
-        <div id="griglia">
-          
-        </div>
-
-    </main>
-
-    <footer>
-        <div>
-
-            <span>Made with &hearts; by</span>
-            <span><a href="#">Boolean</a></span>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <div>
+                <span>
+                    Made with 
+                    <i class="fa-solid fa-heart"></i>
+                    by <a href="#">Boolean</a>
+                </span>
+            </div>
+        </footer>
+    </div>
 
 
     <!-- Js -->
