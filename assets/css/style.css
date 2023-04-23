@@ -19,6 +19,10 @@
     --widthBox: 10;
 }
 
+body {
+    background-color: var(--bgWhite);
+}
+
 #container-body {
     width: 100%;
     height: 100vh;

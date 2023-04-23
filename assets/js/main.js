@@ -118,9 +118,11 @@ function playButton(){
                     <h5>Il tuo punteggio è di: ${score} punti</h5>
                     </div>
                     `
-                   
+                    
+                    // Stop al conteggio
                     clearInterval(myInterval);
                     
+                    // Ripristino il conteggio
                     count = 0;
 
                     inGame = false;
@@ -182,6 +184,7 @@ document.getElementById(`darkMode`).addEventListener( `click`, function() {
     // Creiamo una serie di condizioni per la quale ogni volta verra attivato e non
     if (!darkMode) {
         
+        // Richiamo la funzione
         changeTheme()
         darkMode = true;
     } else {
@@ -195,7 +198,7 @@ document.getElementById(`darkMode`).addEventListener( `click`, function() {
     }
 })
 
-// Funzione per contare il tempo
+// Funzione per contare il tempo dopo ogni secondo
 function contatore(){
 
     count++
